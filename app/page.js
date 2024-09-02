@@ -133,7 +133,14 @@ export default function Home() {
           </Stack>
         </Box>
       </Modal>
-      <Button variant="contained" onClick={handleOpen}>
+      <Button variant="contained" onClick={handleOpen}
+      sx={{
+        backgroundColor: "#f3b8ff", // Your desired background color
+        color: "#7b268c", // Text color
+        '&:hover': {
+          backgroundColor: "#e399f2", // Hover background color
+        },
+      }}>
         Enter New Item
       </Button>
       <Box border={"1px solid #f3b8ff"}>
@@ -167,7 +174,14 @@ export default function Home() {
               <Typography variant={"h4"} color={"#7b268c"} textAlign={"center"}>
                 Quantity: {quantity}
               </Typography>
-              <Button variant="contained" onClick={() => removeItem(name)}>
+              <Button variant="contained" onClick={() => removeItem(name)}
+                sx={{
+                  backgroundColor: "#f3b8ff", // Background color
+                  color: "#7b268c", // Text color
+                  '&:hover': {
+                    backgroundColor: "#e399f2", // Hover background color
+                  },
+                }}>
                 Remove Item
               </Button>
             </Box>
