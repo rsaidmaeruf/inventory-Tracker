@@ -28,14 +28,14 @@ const style = {
   left: "50%",
   transform: "translate(-50%, -50%)",
   width: 400,
-  bgcolor: "white", //#f3b8ff
-  border: "2px solid #000",
-  borderRadius: "200px",
+  bgcolor: "white",
+  border: "2px solid #f3b8ff",
   boxShadow: 24,
   p: 4,
   display: "flex",
   flexDirection: "column",
   gap: 3,
+  color: "#7b268c",
 };
 
 
@@ -88,19 +88,30 @@ export default function Home() {
 
   return (
     <Box
-      width="100vw"
-      height="100vh"
-      display={"flex"}
-      justifyContent={"center"}
-      flexDirection={"column"}
-      alignItems={"center"}
-      gap={2}
-      
+  width="100vw"
+  height="100vh"
+  display={"flex"}
+  justifyContent={"center"}
+  flexDirection={"column"}
+  alignItems={"center"}
+  gap={2}
+  
+>
+  {showAlert && (
+    <Alert
+      severity="info"
+      sx={{
+        backgroundColor: "#f3b8ff", // Set the background color
+        color: "#7b268c", // Set the text color
+        border: "1px solid #7b268c", // Set the border color
+        "& .MuiAlert-icon": {
+          color: "#7b268c", // Optional: Set the icon color to match the text
+        },
+      }}
     >
-      {showAlert && (
-        <Alert severity="info">Item Successfully Added!.</Alert>
-      )}
-
+      Item Successfully Added!
+    </Alert>
+  )}
       <Modal
         open={open}
         onClose={handleClose}
@@ -119,6 +130,28 @@ export default function Home() {
               fullWidth
               value={itemName}
               onChange={(e) => setItemName(e.target.value)}
+              sx={{
+                "& .MuiOutlinedInput-root": {
+                  "& fieldset": {
+                    borderColor: "#7b268c", // Set the default outline color
+                  },
+                  "&:hover fieldset": {
+                    borderColor: "#e399f2", // Set the outline color on hover
+                  },
+                  "&.Mui-focused fieldset": {
+                    borderColor: "#7b268c", // Set the outline color when focused
+                  },
+                  "& input": {
+                    color: "#7b268c", // Set the text color of the input
+                  },
+                },
+                "& .MuiInputLabel-root": {
+                  color: "#7b268c", // Set the label color
+                },
+                "& .MuiInputLabel-root.Mui-focused": {
+                  color: "#7b268c", // Set the label color when focused
+                },
+              }}
             />
             <Button
               variant="outlined"
@@ -126,6 +159,14 @@ export default function Home() {
                 addItem(itemName);
                 setItemName("");
                 handleClose();
+              }}
+              sx={{
+                color: "#7b268c", // Set the text color
+                backgroundColor: "#f3b8ff", // Set the background color
+                borderColor: "#7b268c", // Set the border color if outlined
+                "&:hover": {
+                  borderColor: "#e399f2", // Border color on hover
+                }
               }}
             >
               Add Item
